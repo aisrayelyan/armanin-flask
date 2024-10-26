@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+    width: 80%;
+    max-width: 600px;
+}
+
+#task-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+#task-form input {
+    flex: 1;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+#task-form button {
+    padding: 0.5em;
+}
+
+#task-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#task-list li {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
