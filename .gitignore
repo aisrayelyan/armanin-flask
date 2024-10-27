@@ -1,2 +1,3 @@
 .kube/
 .minikube/
+.minikube/cache/preloaded-tarball/preloaded-images-k8s-v18-v1.30.0-docker-overlay2-amd64.tar.lz4
