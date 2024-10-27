@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      IMAGE_NAME: "aisrayelyan/armanin-flask:latest"
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -30,7 +33,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: armanin/armanin-flask:latest
+        tags: ${{ env.IMAGE_NAME }}
 
     - name: Deploy to Kubernetes
       uses: appleboy/ssh-action@v0.1.7
