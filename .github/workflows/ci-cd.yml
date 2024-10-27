@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: aisrayelyan/armanin-flask:latest
+
+    - name: Deploy to Kubernetes
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.K8S_HOST }}
+        username: ${{ secrets.K8S_USER }}
+        key: ${{ secrets.K8S_KEY }}
+        port: ${{ secrets.K8S_PORT }}
+        script: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+          kubectl apply -f ingress.yaml
+          kubectl apply -f pod.yaml
+          kubectl apply -f  postgresql-service.yaml
+          kubectl apply -f  postgresql-statefulset.yaml
