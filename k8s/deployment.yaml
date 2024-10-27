@@ -13,7 +13,9 @@ spec:
         app: task-manager
     spec:
       containers:
-        - name: task-manager-container
-          image: armanin/armanin-flask
-          ports:
-            - containerPort: 5000
+      - name: task-manager-container
+        image: armanin/armanin-flask
+        ports:
+        - containerPort: 5000
+        command: ["flask", "run", "--host=0.0.0.0"]
+        # Обновите команду, чтобы приложение запускалось как сервер
