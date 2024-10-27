@@ -32,6 +32,9 @@ jobs:
         push: true
         tags: aisrayelyan/armanin-flask:latest
 
+    - name: Save state
+      run: echo "my_state=value" >> $GITHUB_ENV
+
     - name: Deploy to Kubernetes
       uses: appleboy/ssh-action@v0.1.7
       with:
@@ -46,4 +49,3 @@ jobs:
           kubectl apply -f pod.yaml
           kubectl apply -f postgresql-service.yaml
           kubectl apply -f postgresql-statefulset.yaml
-
