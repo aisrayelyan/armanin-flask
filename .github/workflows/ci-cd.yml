@@ -46,3 +46,4 @@ jobs:
           kubectl apply -f pod.yaml
           kubectl apply -f  postgresql-service.yaml
           kubectl apply -f  postgresql-statefulset.yaml
+
