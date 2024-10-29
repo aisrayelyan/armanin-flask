@@ -17,9 +17,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install SSH key
-      uses: webfactory/ssh-key@v0.5.3
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-        key: ${{ secrets.SSH_KEY }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -42,7 +42,7 @@ jobs:
       with:
         host: ${{ secrets.K8S_HOST }}
         username: ${{ secrets.K8S_USER }}
-        key: ${{ secrets.SSH_KEY }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
           kubectl apply -f deployment.yaml
