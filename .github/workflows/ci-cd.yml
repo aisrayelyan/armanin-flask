@@ -28,12 +28,9 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-<<<<<<< HEAD
-=======
     - name: Print current directory
       run: pwd
 
->>>>>>> 26699030ae24462bed5aae397a682cd376126997
     - name: Verify Kubernetes files exist
       run: ls -al ./k8s
 
@@ -73,11 +70,5 @@ jobs:
 
     - name: Long-running process
       run: sleep 3600  # Оставляем workflow активным на час
-    - name: Install dependencies
-      run: npm install
 
-    - name: Start application
-      run: npm start
 
-    - name: Long-running process
-      run: sleep 3600
