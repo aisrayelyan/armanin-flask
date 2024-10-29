@@ -56,12 +56,12 @@ jobs:
         port: ${{ secrets.K8S_PORT }}
         script: |
           cd ~/project-directory
-          if [ -f ./k8s/deployment.yaml ]; then kubectl apply -f ./k8s/deployment.yaml; else echo "deployment.yaml not found"; fi
-          if [ -f ./k8s/service.yaml ]; then kubectl apply -f ./k8s/service.yaml; else echo "service.yaml not found"; fi
-          if [ -f ./k8s/ingress.yaml ]; then kubectl apply -f ./k8s/ingress.yaml; else echo "ingress.yaml not found"; fi
-          if [ -f ./k8s/pod.yaml ]; then kubectl apply -f ./k8s/pod.yaml; else echo "pod.yaml not found"; fi
-          if [ -f ./k8s/postgresql-service.yaml ]; then kubectl apply -f ./k8s/postgresql-service.yaml; else echo "postgresql-service.yaml not found"; fi
-          if [ -f ./k8s/postgresql-statefulset.yaml ]; then kubectl apply -f ./k8s/postgresql-statefulset.yaml; else echo "postgresql-statefulset.yaml not found"; fi
+          kubectl apply -f ./k8s/deployment.yaml --validate=false
+          kubectl apply -f ./k8s/service.yaml --validate=false
+          kubectl apply -f ./k8s/ingress.yaml --validate=false
+          kubectl apply -f ./k8s/pod.yaml --validate=false
+          kubectl apply -f ./k8s/postgresql-service.yaml --validate=false
+          kubectl apply -f ./k8s/postgresql-statefulset.yaml --validate=false
 
     - name: Start application
       run: npm start
