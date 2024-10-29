@@ -55,12 +55,12 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
-          kubectl apply -f ingress.yaml
-          kubectl apply -f pod.yaml
-          kubectl apply -f postgresql-service.yaml
-          kubectl apply -f postgresql-statefulset.yaml
+          kubectl apply -f app/k8s/deployment.yaml
+          kubectl apply -f app/k8s/service.yaml
+          kubectl apply -f app/k8s/ingress.yaml
+          kubectl apply -f app/k8s/pod.yaml
+          kubectl apply -f app/k8s/postgresql-service.yaml
+          kubectl apply -f app/k8s/postgresql-statefulset.yaml
 
     - name: Start application
       run: npm start
