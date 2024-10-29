@@ -31,9 +31,6 @@ jobs:
     - name: Verify Kubernetes files exist
       run: ls -al ./k8s
 
-    - name: Display contents of deployment.yaml
-      run: cat ./k8s/deployment.yaml
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
