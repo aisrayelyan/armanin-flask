@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: task-manager-container
-      image: armanin/armanin-flask:latest
+      image: armanin/me-ft-ai:latest
       ports:
         - containerPort: 5000
