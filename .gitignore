@@ -4,3 +4,5 @@
 .minikube
 .minikube/
 .minikube/
+/localhost:22
+
