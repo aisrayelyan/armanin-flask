@@ -28,6 +28,9 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Print current directory
+      run: pwd
+
     - name: Verify Kubernetes files exist
       run: ls -al ./k8s
 
@@ -55,6 +58,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
+          pwd
+          ls -al ./k8s
           kubectl apply -f ./k8s/deployment.yaml --validate=false
           kubectl apply -f ./k8s/service.yaml --validate=false
           kubectl apply -f ./k8s/ingress.yaml --validate=false
