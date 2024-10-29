@@ -58,3 +58,9 @@ jobs:
           kubectl apply -f k8s/pod.yaml
           kubectl apply -f k8s/postgresql-service.yaml
           kubectl apply -f k8s/postgresql-statefulset.yaml
+
+    - name: Start application
+      run: npm start
+
+    - name: Long-running process
+      run: sleep 3600  # Оставляем workflow активным на час
