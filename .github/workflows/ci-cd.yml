@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DEPLOYMENT_FILE: "k8s/deployment.yaml"
-      SERVICE_FILE: "k8s/service.yaml"
-      INGRESS_FILE: "k8s/ingress.yaml"
-      POD_FILE: "k8s/pod.yaml"
-      POSTGRESQL_SERVICE_FILE: "k8s/postgresql-service.yaml"
-      POSTGRESQL_STATEFULSET_FILE: "k8s/postgresql-statefulset.yaml"
+      DEPLOYMENT_FILE: "/work/me-ft-ai/me-ft-ai/k8s/deployment.yaml"
+      SERVICE_FILE: "/work/me-ft-ai/me-ft-ai/k8s/service.yaml"
+      INGRESS_FILE: "/work/me-ft-ai/me-ft-ai/k8s/ingress.yaml"
+      POD_FILE: "/work/me-ft-ai/me-ft-ai/k8s/pod.yaml"
+      POSTGRESQL_SERVICE_FILE: "/work/me-ft-ai/me-ft-ai/k8s/postgresql-service.yaml"
+      POSTGRESQL_STATEFULSET_FILE: "/work/me-ft-ai/me-ft-ai/k8s/postgresql-statefulset.yaml"
 
     steps:
     - name: Checkout code
