@@ -52,16 +52,9 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
-          kubectl apply -f armanin-flask/k8s/deployment.yaml
-          kubectl apply -f armanin-flask/k8s/service.yaml
-          kubectl apply -f armanin-flask/k8s/ingress.yaml
-          kubectl apply -f armanin-flask/k8s/pod.yaml
-          kubectl apply -f armanin-flask/k8s/postgresql-service.yaml
-          kubectl apply -f armanin-flask/k8s/postgresql-statefulset.yaml
-
-
-    - name: Start application
-      run: npm start
-
-    - name: Long-running process
-      run: sleep 3600  # Оставляем workflow активным на час
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/ingress.yaml
+          kubectl apply -f k8s/pod.yaml
+          kubectl apply -f k8s/postgresql-service.yaml
+          kubectl apply -f k8s/postgresql-statefulset.yaml
