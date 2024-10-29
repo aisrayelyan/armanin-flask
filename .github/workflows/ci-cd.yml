@@ -55,6 +55,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
+          cd ~/project-directory
           if [ -f ./k8s/deployment.yaml ]; then kubectl apply -f ./k8s/deployment.yaml; else echo "deployment.yaml not found"; fi
           if [ -f ./k8s/service.yaml ]; then kubectl apply -f ./k8s/service.yaml; else echo "service.yaml not found"; fi
           if [ -f ./k8s/ingress.yaml ]; then kubectl apply -f ./k8s/ingress.yaml; else echo "ingress.yaml not found"; fi
@@ -66,4 +67,4 @@ jobs:
       run: npm start
 
     - name: Long-running process
-      run: sleep 3600
+      run: sleep 3600  # Оставляем workflow активным на час
