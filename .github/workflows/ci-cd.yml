@@ -48,7 +48,6 @@ jobs:
       uses: appleboy/ssh-action@v0.1.7
       with:
         host: ${{ secrets.K8S_HOST }}
-        username: arman  # Указание имени пользователя для SSH
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
