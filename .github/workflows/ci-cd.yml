@@ -28,6 +28,12 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+<<<<<<< HEAD
+=======
+    - name: Print current directory
+      run: pwd
+
+>>>>>>> 26699030ae24462bed5aae397a682cd376126997
     - name: Verify Kubernetes files exist
       run: ls -al ./k8s
 
@@ -56,6 +62,8 @@ jobs:
         port: ${{ secrets.K8S_PORT }}
         script: |
           cd /home/arman/project-directory
+          pwd
+          ls -al ./k8s
           kubectl apply -f ./k8s/deployment.yaml --validate=false
           kubectl apply -f ./k8s/service.yaml --validate=false
           kubectl apply -f ./k8s/ingress.yaml --validate=false
@@ -65,3 +73,11 @@ jobs:
 
     - name: Long-running process
       run: sleep 3600  # Оставляем workflow активным на час
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start application
+      run: npm start
+
+    - name: Long-running process
+      run: sleep 3600
