@@ -21,7 +21,7 @@ jobs:
       with:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
         NGROK_CONFIG_FILE: "ngrok.yml"
-        WAIT_FOR_CONNECTION: true  # Ждет подключения к туннелю перед продолжением
+        WAIT_FOR_CONNECTION: true
 
     - name: Install SSH key
       uses: webfactory/ssh-agent@v0.5.3
@@ -51,7 +51,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.7
       with:
         host: ${{ secrets.K8S_HOST }}
-        username: arman  # Указание имени пользователя для SSH
+        username: arman
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
@@ -66,4 +66,4 @@ jobs:
       run: npm start
 
     - name: Long-running process
-      run: sleep 3600  # Оставляем workflow активным на час
+      run: sleep 3600
