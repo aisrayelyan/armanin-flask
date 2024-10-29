@@ -12,14 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      DEPLOYMENT_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/deployment.yaml"
-      SERVICE_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/service.yaml"
-      INGRESS_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/ingress.yaml"
-      POD_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/pod.yaml"
-      POSTGRESQL_SERVICE_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/postgresql-service.yaml"
-      POSTGRESQL_STATEFULSET_FILE: "/home/runner/work/me-ft-ai/me-ft-ai/k8s/postgresql-statefulset.yaml"
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -29,7 +21,7 @@ jobs:
       with:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
         NGROK_CONFIG_FILE: "ngrok.yml"
-        WAIT_FOR_CONNECTION: true
+        WAIT_FOR_CONNECTION: true  # Ждет подключения к туннелю перед продолжением
 
     - name: Install SSH key
       uses: webfactory/ssh-agent@v0.5.3
@@ -60,12 +52,12 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.K8S_PORT }}
         script: |
-          kubectl apply -f ${{ env.DEPLOYMENT_FILE }}
-          kubectl apply -f ${{ env.SERVICE_FILE }}
-          kubectl apply -f ${{ env.INGRESS_FILE }}
-          kubectl apply -f ${{ env.POD_FILE }}
-          kubectl apply -f ${{ env.POSTGRESQL_SERVICE_FILE }}
-          kubectl apply -f ${{ env.POSTGRESQL_STATEFULSET_FILE }}
+          kubectl apply -f $(pwd)/k8s/deployment.yaml
+          kubectl apply -f $(pwd)/k8s/service.yaml
+          kubectl apply -f $(pwd)/k8s/ingress.yaml
+          kubectl apply -f $(pwd)/k8s/pod.yaml
+          kubectl apply -f $(pwd)/k8s/postgresql-service.yaml
+          kubectl apply -f $(pwd)/k8s/postgresql-statefulset.yaml
 
     - name: Start application
       run: npm start
