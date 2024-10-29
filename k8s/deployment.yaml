@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: task-manager-container
-        image: armanin/armanin-flask
+        image: armanin/me-ft-ai
         ports:
         - containerPort: 5000
         command: ["flask", "run", "--host=0.0.0.0"]
